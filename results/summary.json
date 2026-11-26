@@ -1,0 +1,195 @@
+{
+  "config": {
+    "WIDTHS": [
+      8,
+      16,
+      32
+    ],
+    "H": 480,
+    "W": 640,
+    "TRAIN_STEPS": 1500,
+    "BATCH": 16,
+    "PATCH": 128,
+    "LR": 0.002,
+    "WARMUP": 10,
+    "ITERS": 100,
+    "ITERS_CPU": 30,
+    "QUICK": false
+  },
+  "machine": "macOS-27.2.1-arm64-arm-64bit",
+  "torch": "2.15.0",
+  "onnxruntime": "1.32.0",
+  "gpu": "mps",
+  "latency": [
+    {
+      "width": 8,
+      "backend": "PyTorch CPU FP32",
+      "median_ms": 75.0836,
+      "p95_ms": 79.7453,
+      "max_abs_diff": 0.0,
+      "fps": 13.3185,
+      "meets_30fps": false
+    },
+    {
+      "width": 8,
+      "backend": "PyTorch MPS FP32",
+      "median_ms": 7.5484,
+      "p95_ms": 8.8219,
+      "max_abs_diff": 0.0,
+      "fps": 132.4792,
+      "meets_30fps": true
+    },
+    {
+      "width": 8,
+      "backend": "PyTorch MPS FP16",
+      "median_ms": 5.4211,
+      "p95_ms": 6.3449,
+      "max_abs_diff": 0.0012,
+      "fps": 184.4643,
+      "meets_30fps": true
+    },
+    {
+      "width": 16,
+      "backend": "PyTorch CPU FP32",
+      "median_ms": 151.5362,
+      "p95_ms": 152.9054,
+      "max_abs_diff": 0.0,
+      "fps": 6.5991,
+      "meets_30fps": false
+    },
+    {
+      "width": 16,
+      "backend": "PyTorch MPS FP32",
+      "median_ms": 15.3843,
+      "p95_ms": 16.0852,
+      "max_abs_diff": 0.0,
+      "fps": 65.0015,
+      "meets_30fps": true
+    },
+    {
+      "width": 16,
+      "backend": "PyTorch MPS FP16",
+      "median_ms": 11.8232,
+      "p95_ms": 12.5697,
+      "max_abs_diff": 0.001,
+      "fps": 84.5794,
+      "meets_30fps": true
+    },
+    {
+      "width": 32,
+      "backend": "PyTorch CPU FP32",
+      "median_ms": 306.4354,
+      "p95_ms": 310.8612,
+      "max_abs_diff": 0.0,
+      "fps": 3.2633,
+      "meets_30fps": false
+    },
+    {
+      "width": 32,
+      "backend": "PyTorch MPS FP32",
+      "median_ms": 38.2192,
+      "p95_ms": 39.024,
+      "max_abs_diff": 0.0,
+      "fps": 26.1649,
+      "meets_30fps": false
+    },
+    {
+      "width": 32,
+      "backend": "PyTorch MPS FP16",
+      "median_ms": 31.2668,
+      "p95_ms": 31.8369,
+      "max_abs_diff": 0.001,
+      "fps": 31.9828,
+      "meets_30fps": true
+    },
+    {
+      "width": 8,
+      "backend": "ONNX Runtime CoreML",
+      "median_ms": 12.2002,
+      "p95_ms": 14.0079,
+      "max_abs_diff": 0.001,
+      "fps": 81.9661,
+      "meets_30fps": true
+    },
+    {
+      "width": 8,
+      "backend": "ONNX Runtime CPU",
+      "median_ms": 28.304,
+      "p95_ms": 29.3012,
+      "max_abs_diff": 0.0,
+      "fps": 35.3307,
+      "meets_30fps": true
+    },
+    {
+      "width": 16,
+      "backend": "ONNX Runtime CoreML",
+      "median_ms": 23.3133,
+      "p95_ms": 24.5203,
+      "max_abs_diff": 0.001,
+      "fps": 42.894,
+      "meets_30fps": true
+    },
+    {
+      "width": 16,
+      "backend": "ONNX Runtime CPU",
+      "median_ms": 77.2253,
+      "p95_ms": 78.1404,
+      "max_abs_diff": 0.0,
+      "fps": 12.9491,
+      "meets_30fps": false
+    },
+    {
+      "width": 32,
+      "backend": "ONNX Runtime CoreML",
+      "median_ms": 48.2874,
+      "p95_ms": 51.1251,
+      "max_abs_diff": 0.0011,
+      "fps": 20.7093,
+      "meets_30fps": false
+    },
+    {
+      "width": 32,
+      "backend": "ONNX Runtime CPU",
+      "median_ms": 242.3313,
+      "p95_ms": 244.4276,
+      "max_abs_diff": 0.0,
+      "fps": 4.1266,
+      "meets_30fps": false
+    }
+  ],
+  "quality": [
+    {
+      "width": 8,
+      "params_k": 29.483,
+      "psnr_fp32": 22.326,
+      "psnr_fp16": 22.325,
+      "psnr_input": 13.723
+    },
+    {
+      "width": 16,
+      "params_k": 117.075,
+      "psnr_fp32": 22.836,
+      "psnr_fp16": 22.836,
+      "psnr_input": 13.723
+    },
+    {
+      "width": 32,
+      "params_k": 466.595,
+      "psnr_fp32": 22.533,
+      "psnr_fp16": 22.535,
+      "psnr_input": 13.723
+    }
+  ],
+  "pipeline": {
+    "device": "mps",
+    "fp16": true,
+    "width": 16,
+    "stages_ms": {
+      "preprocess": 0.509,
+      "to device": 1.476,
+      "inference": 18.022,
+      "to host + postprocess": 1.097
+    },
+    "total_ms": 21.104
+  }
+}
