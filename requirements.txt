@@ -1,0 +1,8 @@
+torch>=2.2
+onnx
+onnxruntime
+numpy
+pandas
+scikit-learn
+matplotlib
+ipykernel
